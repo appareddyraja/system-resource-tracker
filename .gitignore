@@ -1,0 +1,31 @@
+
+### `.gitignore`
+This file tells Git which files or directories to ignore. It's important to exclude sensitive information (like API keys, virtual environments, or system-specific files) from being pushed to GitHub.
+
+```gitignore
+# Python specific
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# IDE/editor files
+.idea/
+.vscode/
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
