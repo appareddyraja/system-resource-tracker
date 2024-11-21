@@ -20,8 +20,8 @@ This is a Flask-based web application that continuously monitors and visualizes 
 
 ### 1. Clone the Repository
 ```
-git clone https://
-cd your-project-directory
+git clone https://github.com/appareddyraja/system-resource-tracker.git
+cd system-resource-tracker
 ```
 
 ### 2. Create a Virtual Environment (Optional but Recommended)
