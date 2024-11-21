@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Metrics Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>System Metrics Dashboard</h1>
+    <div id="cpu-chart" style="width:100%; height:400px;"></div>
+    <div id="ram-chart" style="width:100%; height:400px;"></div>
+    <div id="disk-chart" style="width:100%; height:400px;"></div>
+
+    <script>
+        // Fetch metrics data from the server
+        fetch('/metrics')
+            .then(response => response.json())
+            .then(data => {
+                // CPU Chart
+                var cpuTrace = {
+                    x: data.times,
+                    y: data.cpu,
+                    mode: 'lines+markers',
+                    name: 'CPU Usage',
+                    line: { color: 'red' }
+                };
+                Plotly.newPlot('cpu-chart', [cpuTrace], { title: 'CPU Usage (%)' });
+
+                // RAM Chart
+                var ramTrace = {
+                    x: data.times,
+                    y: data.ram,
+                    mode: 'lines+markers',
+                    name: 'RAM Usage',
+                    line: { color: 'blue' }
+                };
+                Plotly.newPlot('ram-chart', [ramTrace], { title: 'RAM Usage (%)' });
+
+                // Disk Chart
+                var diskTrace = {
+                    x: data.times,
+                    y: data.disk,
+                    mode: 'lines+markers',
+                    name: 'Disk Usage',
+                    line: { color: 'green' }
+                };
+                Plotly.newPlot('disk-chart', [diskTrace], { title: 'Disk Usage (%)' });
+            })
+            .catch(error => console.error('Error fetching metrics:', error));
+    </script>
+</body>
+</html>
